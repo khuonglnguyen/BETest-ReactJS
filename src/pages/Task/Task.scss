@@ -1,0 +1,281 @@
+@import './../../assets/scss/variables.scss';
+#pageTask{
+  .title-tasks {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+    color: #000000;
+    margin-bottom: 20px;
+  }
+  .client-id {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #1B499B;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  .name-task {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #1B499B;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  .status-linked {
+    color: #1B499B;
+    background: #D1E2FF;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    width: 95px;
+    height: 24px;
+    text-align: center;
+    padding: 2px;
+  }
+  .status-unLinked {
+    background: #E1E1E1;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #232323;
+    width: 95px;
+    height: 24px;
+    text-align: center;
+    padding: 2px;
+  }
+  .client-id {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #1B499B;
+  }
+  .ant-table-pagination {
+    flex-wrap: wrap;
+    row-gap: 8px; 
+    display: block;
+    text-align: center;
+  }
+
+  .ant-table-pagination.ant-pagination {
+    margin: auto;
+    width: 500px;
+    padding-top: 20px;
+  }
+
+  .edit-task {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+  }
+  .edit-unlink-task {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+  }
+  .bnt-add-task {
+    float: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 16px;
+    gap: 10px;
+
+    background: #1B499B;
+    border-radius: 4px;
+  }
+  .ant-popover-inner-content {
+    width: 135px;
+  }
+
+  .lib-group-action {
+    margin-bottom: 10px;
+  }
+
+  .ant-menu-dark .ant-menu-sub, .ant-menu.ant-menu-dark, .ant-menu.ant-menu-dark .ant-menu-sub{
+    background: #EBEFF4;
+  }
+  .ant-menu-title-content {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 16px;
+      color: #000000;  
+      opacity: 0.7;
+      flex: none;
+      order: 1;
+      flex-grow: 0;
+  }
+  .ant-breadcrumb ol {
+    background: #EBEFF4;
+    height: 50px;
+  }
+  .ant-layout-sider-children  {
+    background: #EBEFF4;
+  }
+  .ant-layout{
+    background: #EBEFF4;
+  }
+
+  .ant-menu-dark .ant-menu-sub .ant-menu-submenu-title 
+  .ant-menu-submenu-arrow:after, .ant-menu-dark .ant-menu-sub .ant-menu-submenu-title
+  .ant-menu-submenu-arrow:before, .ant-menu.ant-menu-dark .ant-menu-sub 
+  .ant-menu-submenu-title .ant-menu-submenu-arrow:after, .ant-menu.ant-menu-dark 
+  .ant-menu-sub .ant-menu-submenu-title .ant-menu-submenu-arrow:before, .ant-menu.ant-menu-dark 
+  .ant-menu-submenu-title .ant-menu-submenu-arrow:after, 
+  .ant-menu.ant-menu-dark .ant-menu-submenu-title .ant-menu-submenu-arrow:before {
+    background: #000000;
+  }
+  .ant-menu-inline.ant-menu-root .ant-menu-item > .ant-menu-title-content, 
+    .ant-menu-inline.ant-menu-root .ant-menu-submenu-title > .ant-menu-title-content {
+      color: #000000;
+    }
+
+  .ant-menu-dark .ant-menu-item-active, .ant-menu-dark .ant-menu-item:hover, 
+  .ant-menu-dark .ant-menu-submenu-active, .ant-menu-dark .ant-menu-submenu-open, 
+  .ant-menu-dark .ant-menu-submenu-selected, .ant-menu-dark .ant-menu-submenu-title:hover {
+    background: #FFFFFF;
+  }
+
+  .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background: #EBEFF4
+  }
+  .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected > .ant-menu-title-content {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: #1B499B;
+    flex: none;
+    order: 0;
+    flex-grow: 0
+  }
+  .ant-layout-sider-children {
+    height: 950px;
+  }
+  .ant-layout-content {
+    background: #EBEFF4;
+  }
+  .ant-layout-header {
+    background: #FFFFFF;
+    border-bottom: 1px solid #DADADA;
+  }
+  .ant-layout-sider {
+    background: #EBEFF4;
+  }
+  .content-task-list .ant-table-thead > tr > th {
+    background: #EBEFF4
+  }
+  .ant-table table {
+    background: #EBEFF4;
+    border-spacing: 0px 10px;
+  }
+  thead, tbody, tfoot, tr, th {
+    background: #FFFFFF;
+    border-radius: 5px;
+  }
+  .ant-breadcrumb {
+    height: 50px;
+  }
+  .ant-layout-content .content-task-list {
+    margin-right: 20px !important;
+  }
+  .ant-table-tbody > tr > td, .ant-table-thead > tr > th, .ant-table tfoot > tr > td, .ant-table tfoot > tr > th {
+    padding: 2px;
+  }
+  .ant-table-column-sorters {
+    float: left;
+  }
+  .ant-table-thead th.ant-table-column-has-sorters:hover {
+    background: #EBEFF4;
+  }
+  .ant-table-thead > tr > th {
+    border-bottom: 0px;
+  }
+  .ant-table-column-sorters .ant-tooltip-open {
+    display: none !important;
+  }
+  .ant-layout-sider {
+    background: #EBEFF4;
+  }
+  .ant-layout.ant-layout-has-sider {
+    padding-right: 20px;
+  }
+  .ant-pagination-item-active {
+    background: #01015B;
+    border-radius: 5px;
+    color: white;
+  }
+  .content-task-list .ant-table-thead > tr > th {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    color: #8E8E8E;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  .ant-btn .anticon {
+    color: #1B499B;
+  }
+  .ant-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 9px 12px;
+    gap: 162px;
+    height: 39px;
+    background: #FFFFFF;
+    border: 1px solid #DBDBDB;
+    border-radius: 5px;
+  }
+  .ant-input-group-addon {
+    height: 39px;
+    width: 50px;
+  }
+  .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button {
+    background: #FFFFFF;
+    border: 1px solid #DBDBDB;
+    border-radius: 5px;
+    height: 39px;
+    width: 50px;
+  }
+
+  .ant-table-thead > tr > th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan]):before {
+    height: 0em;
+  }
+  .ant-pagination-next .ant-pagination-item-link, .ant-pagination-prev .ant-pagination-item-link {
+    font-size: 0px;
+  }
+  .optional {
+    margin-top: 10px;
+  }
+  }

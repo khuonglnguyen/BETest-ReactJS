@@ -1,0 +1,20 @@
+/* Put any other imports below so that CSS from your components takes precedence over default styles. */
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';
+@import "@fortawesome/fontawesome-free/css/all.css";
+@import '~antd/dist/antd.variable.min.css';
+// @import '~antd/dist/antd.css';
+// @import '~antd/dist/antd.dark.css';
+// @import '~antd/dist/antd.compact.css';
+html,
+body {
+  height: 100%;
+  font-family: 'Montserrat', 'Roboto', sans-serif !important;
+}
+
+body {
+  margin: 0;
+}
+@import "./assets/scss/custom.scss";
+@import "./assets/scss/table-custom.scss";
+@import "./assets/scss/dropdown-custom.scss";

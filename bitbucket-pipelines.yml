@@ -1,0 +1,57 @@
+image: dwdraju/alpine-curl-jq
+
+definitions:
+  steps:
+    - step: &trigger_then_wait
+        name: Trigger Jenkins then wait
+        script:
+          - >-            
+            QUEUE_URL=$(curl -X POST -sI -u "$JENKINS_JOB_STATUS_CRED" "https://pipeline.marketnode.com/job/$JENKINS_PIPELINE_NAME/buildWithParameters?token=$JENKINS_PIPELINE_NAME&BUILD_BRANCH=$BITBUCKET_BRANCH&BUILD_ENVIRONMENT=$BUILD_ENVIRONMENT&BUILD_VERSION=$BITBUCKET_BUILD_NUMBER" | grep location | sed 's/^location: *//' | tr -d '\r');
+            echo "Queue is placed at: $QUEUE_URL";
+
+            while [ "$(curl -s -u $JENKINS_JOB_STATUS_CRED ${QUEUE_URL}api/json | jq .executable.url)" == "null" ]; do
+              echo "Waiting for the job to place in queue..."
+              sleep 1
+            done
+
+            JOB_URL=$(curl -s -u $JENKINS_JOB_STATUS_CRED ${QUEUE_URL}api/json | jq .executable.url | tr -d '"');
+            echo "The job URL is at: $JOB_URL";
+
+            while [ "$(curl -u $JENKINS_JOB_STATUS_CRED -s "${JOB_URL}api/json" | jq -r .building)" != "false" ]; do
+                echo "Waiting for the deployment to complete... - Current status: $(curl -u $JENKINS_JOB_STATUS_CRED -s ${JOB_URL}api/json | jq -r .result)";
+                sleep 5
+            done
+
+          - >-
+            curl -u $JENKINS_JOB_STATUS_CRED -s "${JOB_URL}consoleText" | sed 's/^/  /'
+
+          - >-
+            echo "It's done - Current status: $(curl -u $JENKINS_JOB_STATUS_CRED -s ${JOB_URL}api/json | jq -r .result)"
+            
+            if [ "$(curl -u $JENKINS_JOB_STATUS_CRED -s "${JOB_URL}api/json" | jq -r .result)" != "SUCCESS" ]; then
+                exit 1;
+            fi
+
+pipelines:
+  custom:
+    QA:
+      - step:
+          <<: *trigger_then_wait
+          name: Trigger for [QA]
+          deployment: qa
+    Staging:
+      - step:
+          <<: *trigger_then_wait
+          name: Trigger for [Staging]
+          deployment: staging
+    Production:
+      - step:
+          <<: *trigger_then_wait
+          name: Trigger for [Production]
+          deployment: production
+  branches:
+    development:
+      - step:
+          <<: *trigger_then_wait
+          name: Trigger for [Dev]
+          deployment: dev

@@ -1,0 +1,33 @@
+@import 'variables';
+
+.anticon-vertical {
+  transform: rotate(90deg);
+}
+
+.anticon > * {
+  font-weight: bolder;
+  font-size: 16px;
+}
+
+.no-padding{
+  padding: 0 !important;
+}
+.no-margin{
+  margin: 0 !important;
+}
+
+.bg-purple {
+  background-color: $light-purple;
+  color: #FFFFFF;
+}
+
+.btn-tableau {
+  background: #6BE9EB;
+  border: 1px solid #6BE9EB;
+}
+a {
+  text-decoration: none !important;
+}
+.MuiPopover-root {
+  z-index: 999999 !important;
+}

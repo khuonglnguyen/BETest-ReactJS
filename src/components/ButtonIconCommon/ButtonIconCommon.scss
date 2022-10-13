@@ -1,0 +1,53 @@
+.lib-btn-icon-common {
+    width: 66px;
+    height: 66px;
+    border-color: transparent !important;
+}
+
+.lib-popover-button {
+    position: fixed;
+    z-index: 999999;
+    .ant-popover-inner {
+        background: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        border-radius: 5px;
+        transition: visibility 0s,opacity .5s linear;
+    }
+    .ant-popover-inner-content {
+        padding: 30px 5px 30px 30px;
+    }
+
+    &.ant-popover-placement-top .ant-popover-arrow, &.ant-popover-placement-topLeft .ant-popover-arrow, &.ant-popover-placement-topRight .ant-popover-arrow {
+        bottom: 1px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+  .lib-btn-icon-common {
+    width: 60px;
+    height: 60px;
+    i {
+      font-size: 28px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .lib-btn-icon-common {
+    width: 55px;
+    height: 55px;
+    i {
+      font-size: 24px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .lib-btn-icon-common {
+    width: 50px;
+    height: 50px;
+    i {
+      font-size: 22px !important;
+    }
+  }
+}

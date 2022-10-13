@@ -1,0 +1,199 @@
+@import './variables.scss';
+
+.lib-table-wrapper {
+  background-color: $table-background;
+
+  .ant-table {
+    background-color: $table-background;
+    font-size: $base-size;
+    font-weight: $base-weight;
+    line-height: 1.5;
+  }
+
+  .ant-table table {
+    border-spacing: 0 10px;
+  }
+
+  .ant-table-container {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .lib-tb-btn {
+    border-radius: 5px;
+    padding: 4px 8px;
+    font-size: 14px;
+    line-height: 1;
+    border: 1px solid #D8D8D8;
+
+
+    .anticon {
+      color: #000000;
+      vertical-align: 0;
+
+      >* {
+        font-size: 14px;
+        font-weight: 700;
+      }
+    }
+
+    &.lib-tb-btn-more {
+      background: #F0F5FF;
+      border-color: #F0F5FF;
+    }
+
+    &.btn-tableau {
+      background: #6BE9EB;
+      border-color: #6BE9EB;
+    }
+  }
+
+  .ant-table-thead>tr>th {
+    font-weight: 800;
+    color: rgba(0, 0, 0, .54);
+    background-color: $table-background;
+    border: none;
+
+    &.ant-table-row-expand-icon-cell {
+      width: 70px;
+    }
+
+    &:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
+      display: none;
+    }
+  }
+
+  .ant-table-tbody>tr {
+    >td {
+      color: rgba(0, 0, 0, .87);
+      vertical-align: middle;
+      cursor: pointer;
+
+      >div {
+        flex: auto;
+        margin: auto;
+      }
+
+      &.lib-table-actions {
+        &.lib-table-actions-icon {
+          .ant-space {
+            display: flex;
+            flex: auto;
+            .ant-space-item {
+              flex: auto;
+              justify-content: flex-end;
+              display: inline-flex;
+            }
+          }
+        }
+      }
+    }
+
+    &:not(.ant-table-expanded-row) {
+      >td {
+        background: #FFFFFF;
+        border-top: 1px solid $table-border;
+        border-bottom: 1px solid $table-border;
+
+        &.ant-table-row-expand-icon-cell {
+          width: 70px;
+        }
+
+        &.ant-table-cell-row-hover {
+          background: #FAFAFA;
+        }
+
+        &.ant-table-cell:first-child {
+          border-left: 1px solid $table-border;
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+        }
+
+        &.ant-table-cell:last-child {
+          border-right: 1px solid $table-border;
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+        }
+
+      }
+
+      &.lib-table-row-expand-open {
+        >td {
+          border-bottom: none;
+
+          &.ant-table-cell:first-child {
+            border-bottom-left-radius: 0;
+          }
+
+          &.ant-table-cell:last-child {
+            border-bottom-right-radius: 0;
+          }
+        }
+      }
+    }
+
+    &.ant-table-expanded-row {
+      background-color: #eff4fb;
+
+      .ant-table {
+        background-color: #eff4fb;
+      }
+
+      .ant-table-wrapper {
+
+        &::before,
+        &::after {
+          display: none;
+        }
+      }
+
+      table {
+        border-spacing: 0;
+
+        thead>tr>th,
+        tbody>tr>td {
+          border: none;
+          background-color: #eff4fb;
+        }
+      }
+
+      .ant-table-thead>tr>th {
+        font-weight: $base-weight;
+        padding: 5px 16px 0 16px;
+      }
+
+      .ant-table-tbody>tr>td {
+        font-weight: 800;
+        padding: 0 16px 5px 16px;
+      }
+
+      .ant-table-cell {
+        background-color: #eff4fb;
+        padding: 0;
+        border: none !important;
+
+        &.ant-table-cell-row-hover {
+          background-color: #eff4fb;
+        }
+      }
+    }
+  }
+
+  .ant-table-tbody>tr>td>.ant-table-wrapper:only-child .ant-table,
+  .ant-table-tbody>tr>td>.ant-table-expanded-row-fixed>.ant-table-wrapper:only-child .ant-table {
+    margin: -10px 0 0px 0px;
+    border: 1px solid $table-border;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    .ant-table-container {
+      margin: 0 0 0 72px;
+    }
+  }
+
+}

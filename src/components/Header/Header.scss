@@ -1,0 +1,160 @@
+@import './../../assets/scss/variables.scss';
+
+$ant-layout-header-height: $header-height - $header-border-size;
+
+.ant-layout-header {
+  background-color: #ffffff;
+  padding: 0 30px;
+  border-bottom: $header-border-size solid #E8ECEF;
+  height: $ant-layout-header-height;
+  width: 100%;
+
+  .ant-layout-content, .ant-layout-content .ant-row, .ant-layout-content .ant-row .ant-col {
+    position: relative;
+    height: 100%;
+  }
+}
+
+.header-menu {
+  line-height: $header-line-height;
+}
+.logo-header {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  line-height: $header-line-height;
+  img {
+    align-items: center;
+  }
+}
+/*===Userprofile*/
+.u-info {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  justify-content: flex-end;
+
+  >* {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  .ant-avatar {
+    margin: auto 12px;
+  }
+  .ant-form-item-label {
+    margin: 0;
+    text-align: left;
+    >label {
+      cursor: pointer;
+    }
+  }
+  .anticon > * {
+    font-size: 25px;
+  }
+}
+
+.button-comps {
+  width: 164px;
+  height: 36px;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #fff;
+  font-size: 14px;
+}
+
+.button-menu {
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-radius: 5px;
+  background: #fff;
+  padding: 8px;
+  &:focus {
+    background: #E7E6E6;
+  }
+}
+
+.menu {
+  border-radius: 5px;
+  padding: 10px 5px;
+  li {
+    text-align: right;
+  }
+  &-title {
+    color: #01015B;
+    opacity: 0.4; 
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .col-menu {
+      display: none !important;
+  }
+  .header {
+    .logo-header {
+      .minimize-logo {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .header {
+    .logo-header {
+      .full-logo {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .header {
+    .col-compsTable {
+      display: none !important;
+    }
+    .button-comps {
+      transform: scale(.85);
+      span {
+        font-size: 13px;
+      }
+    }
+  }
+
+} 
+
+@media screen and (min-width: 480px) and (max-width: 1024px) {
+  .divider-custom, .avatar-custom, .logOut-custom {
+    display: none;
+  }
+
+} 
+
+@media screen and (max-width: 768px) {
+  .header {
+    .col-compsTable {
+      display: none !important;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header {
+    .col-avarta {
+      display: none !important;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@": "./src",
+          "~@types": "./src/@types",
+          "@App": "./src/App",
+          "@hooks": "./src/hooks",
+          "@guards": "./src/guards",
+          "@components": "./src/components",
+          "@helpers": "./src/helpers",
+          "@pages": "./src/pages",
+          "@apis": "./src/apis",
+          "@assets": "./src/assets",
+          "@constants": "./src/constants",
+          "@store": "./src/store",
+          "@reducer": "./src/reducer"
+        }
+      }
+    ]
+  ]
+}

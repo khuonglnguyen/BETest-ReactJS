@@ -1,0 +1,28 @@
+.title-hearder {
+  position: absolute;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #01015B;
+  margin-top: 23px;
+  margin-left: 10px;
+}
+.user-name-hearder {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #01015B;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+  float: right;
+  margin-top: 24px;
+}
+.ant-layout-header {
+  background: #FFFFFF;
+  border-bottom: 1px solid #DADADA;
+}

@@ -1,0 +1,29 @@
+.ant-layout-footer {
+  text-align: center;
+  color: #646464;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 15px;
+}
+.lib-footer {
+  &__terms {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+    a + a {
+      margin-left: 32px;
+    }
+    a {
+      color: #646464;
+      &:hover {
+        color: #007bff;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ant-layout-footer {
+    padding: 24px 30px;
+  }
+}

@@ -1,0 +1,10 @@
+<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12.4743" cy="6.84928" r="1.125" transform="rotate(30 12.4743 6.84928)" fill="#01015B"/>
+<circle cx="3.48868" cy="11.2578" r="1.125" transform="rotate(30 3.48868 11.2578)" fill="#01015B"/>
+<circle cx="10.2243" cy="11.3493" r="1.125" transform="rotate(30 10.2243 11.3493)" fill="#A73ED6"/>
+<circle cx="1.78678" cy="6.84928" r="1.125" transform="rotate(30 1.78678 6.84928)" fill="#A73ED6"/>
+<path d="M10.375 11.5L4.1875 2.21875L1.93751 6.71873L10.375 11.5Z" stroke="#A73ED6" stroke-width="0.5625"/>
+<path d="M3.76993 11.2577L10.375 2.21872L12.625 6.99994L3.76993 11.2577Z" stroke="#01015B" stroke-width="0.5625"/>
+<circle cx="4.03678" cy="2.34928" r="1.125" transform="rotate(30 4.03678 2.34928)" fill="#01015B"/>
+<circle cx="10.2243" cy="2.34928" r="1.125" transform="rotate(30 10.2243 2.34928)" fill="#A73ED6"/>
+</svg>

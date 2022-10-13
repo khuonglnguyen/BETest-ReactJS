@@ -1,0 +1,85 @@
+.title-hearder {
+  position: absolute;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #01015B;
+  margin-top: 23px;
+  margin-left: 10px;
+}
+.user-name-hearder {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #01015B;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+  float: right;
+  margin-top: 24px;
+}
+.ant-layout-sider-children {
+  margin-right: 20px;
+}
+.ant-menu-dark .ant-menu-sub .ant-menu-submenu-title 
+.ant-menu-submenu-arrow:after, .ant-menu-dark .ant-menu-sub .ant-menu-submenu-title
+ .ant-menu-submenu-arrow:before, .ant-menu.ant-menu-dark .ant-menu-sub 
+ .ant-menu-submenu-title .ant-menu-submenu-arrow:after, .ant-menu.ant-menu-dark 
+ .ant-menu-sub .ant-menu-submenu-title .ant-menu-submenu-arrow:before, .ant-menu.ant-menu-dark 
+ .ant-menu-submenu-title .ant-menu-submenu-arrow:after, 
+ .ant-menu.ant-menu-dark .ant-menu-submenu-title .ant-menu-submenu-arrow:before {
+   background: #000000;
+}
+.ant-menu-inline.ant-menu-root .ant-menu-item > .ant-menu-title-content, 
+  .ant-menu-inline.ant-menu-root .ant-menu-submenu-title > .ant-menu-title-content {
+    color: #000000;
+  }
+
+.ant-menu-dark .ant-menu-item-active, .ant-menu-dark .ant-menu-item:hover, 
+.ant-menu-dark .ant-menu-submenu-active, .ant-menu-dark .ant-menu-submenu-open, 
+.ant-menu-dark .ant-menu-submenu-selected, .ant-menu-dark .ant-menu-submenu-title:hover {
+  background: #FFFFFF  !important;
+}
+.ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background: #EBEFF4  !important;
+}
+.ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected > .ant-menu-title-content {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #1B499B;
+  flex: none;
+  order: 0;
+  flex-grow: 0
+}
+.ant-menu-dark .ant-menu-sub, .ant-menu.ant-menu-dark, .ant-menu.ant-menu-dark .ant-menu-sub{
+  background: #EBEFF4 !important;
+}
+
+.ant-menu-title-content {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #000000;  
+    opacity: 0.7;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+.ant-layout-sider-children {
+  height: 950px;
+}
+.ant-layout{
+  background: #EBEFF4 !important;
+}
+.ant-layout> .ant-layout-sider .ant-layout-sider-dark .site-layout-background {
+  background: #EBEFF4 !important;
+}
