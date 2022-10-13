@@ -46,7 +46,11 @@ class AppRoutes extends React.Component<any, any> {
             path={PATH.USER}
             element={
               <React.Suspense fallback={<Loading />}>
-                <UserPage />
+                {localStorage.getItem("jwt") !== null ? (
+                  <UserPage />
+                ) : (
+                  <LoginPage></LoginPage>
+                )}
               </React.Suspense>
             }
           ></Route>

@@ -27,7 +27,6 @@ import client from "@assets/images/users/icon-user.png";
 const { Search } = Input;
 const { Content } = Layout;
 function User(props: any) {
-  const navigate = useNavigate();
   const [isShowPopover, setIsShowPopover] = useState<boolean>(false);
   const [keySelectRecord, setkeySelectRecord] = useState("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
