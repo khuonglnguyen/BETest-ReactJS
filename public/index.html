@@ -1,27 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<base href="/">
+  <base href="/" />
 
-<head>
-  <meta charset="utf-8" />
-  <link rel="icon" type="image/x-icon" href="%PUBLIC_URL%/icon-librarynode.png">
-  <meta name="theme-color" content="#FFFFFF" />
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/icon-librarynode.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="%PUBLIC_URL%/icon-librarynode.png"
+    />
+    <meta name="theme-color" content="#FFFFFF" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/icon-librarynode.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-  <title>Librarynode</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <script type='text/javascript' src='https://prod-apnortheast-a.online.tableau.com/javascripts/api/tableau-2.min.js'></script>
- 
-</head>
+    <title>Librarynode</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script
+      type="text/javascript"
+      src="https://prod-apnortheast-a.online.tableau.com/javascripts/api/tableau-2.min.js"
+    ></script>
+    <script>
+      var appLocation = "./";
+      var boilerplatePath = "";
+      var systemJsMap = {
+        "@ag-grid-community/react":
+          "https://unpkg.com/@ag-grid-community/react@28.2.0/",
+        "@ag-grid-community/styles":
+          "https://unpkg.com/@ag-grid-community/styles@28.2.0/",
+        "ag-grid-community": "https://unpkg.com/ag-grid-community@28.2.0/",
+        "ag-grid-enterprise": "https://unpkg.com/ag-grid-enterprise@28.2.0/",
+        "ag-grid-react": "https://unpkg.com/ag-grid-react@28.2.0/",
+      };
+      var systemJsPaths = {
+        "@ag-grid-community/client-side-row-model":
+          "https://unpkg.com/@ag-grid-community/client-side-row-model@28.2.0/dist/client-side-row-model.cjs.min.js",
+        "@ag-grid-community/core":
+          "https://unpkg.com/@ag-grid-community/core@28.2.0/dist/core.cjs.min.js",
+        "@ag-grid-community/csv-export":
+          "https://unpkg.com/@ag-grid-community/csv-export@28.2.0/dist/csv-export.cjs.min.js",
+        "@ag-grid-community/infinite-row-model":
+          "https://unpkg.com/@ag-grid-community/infinite-row-model@28.2.0/dist/infinite-row-model.cjs.min.js",
+      };
+    </script>
+  </head>
 
-<body class="mat-typography">
-  <!-- <app-root></app-root> -->
-  <div id="root"></div>
-</body>
-
+  <body class="mat-typography">
+    <!-- <app-root></app-root> -->
+    <div id="root"></div>
+  </body>
 </html>

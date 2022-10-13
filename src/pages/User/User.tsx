@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { EditFilled, DeleteOutlined } from "@ant-design/icons";
+import type { ColumnsType } from "antd/es/table";
 import * as UserModel from "@/model/user";
 import _ from "lodash";
 import {
@@ -15,6 +16,11 @@ import {
   Tag,
   Modal,
 } from "antd";
+
+import update from "immutability-helper";
+import { DndProvider, useDrag, useDrop } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import ReactDragListView from "react-drag-listview";
 
 import "./User.scss";
 import Loading from "@components/Loading/Loading";
@@ -31,6 +37,47 @@ function User(props: any) {
   const [keySelectRecord, setkeySelectRecord] = useState("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [key, setKey] = useState("");
+  const [columns, setColumns] = useState(() => {
+    return [
+      {
+        key: "1",
+        title: "ID",
+        dataIndex: "id",
+      },
+      {
+        key: "2",
+        title: "Name",
+        dataIndex: "name",
+      },
+      {
+        key: "3",
+        title: "Age",
+        dataIndex: "age",
+      },
+      {
+        key: "4",
+        title: "Actions",
+        render: (record: any) => {
+          return (
+            <>
+              <EditFilled
+                onClick={() => {
+                  showModalEdit();
+                  onEditUser(record);
+                }}
+              ></EditFilled>
+              <DeleteOutlined
+                style={{ color: "red", marginLeft: 12 }}
+                onClick={() => {
+                  onDeleteUser(record);
+                }}
+              />
+            </>
+          );
+        },
+      },
+    ];
+  });
 
   const [listDataUser, setListDataUser] = useState();
 
@@ -43,45 +90,125 @@ function User(props: any) {
   const [dataSource, setDataSource] = useState(() => {
     return JSON.parse(localStorage.getItem("users") || "[]");
   });
-  const columns = [
-    {
-      key: "1",
-      title: "ID",
-      dataIndex: "id",
-    },
-    {
-      key: "2",
-      title: "Name",
-      dataIndex: "name",
-    },
-    {
-      key: "3",
-      title: "Age",
-      dataIndex: "age",
-    },
-    {
-      key: "4",
-      title: "Actions",
-      render: (record: any) => {
-        return (
-          <>
-            <EditFilled
-              onClick={() => {
-                showModalEdit();
-                onEditUser(record);
-              }}
-            ></EditFilled>
-            <DeleteOutlined
-              style={{ color: "red", marginLeft: 12 }}
-              onClick={() => {
-                onDeleteUser(record);
-              }}
-            />
-          </>
-        );
+
+  interface DataType {
+    id: number;
+    name: string;
+    age: number;
+  }
+
+  interface DraggableBodyRowProps
+    extends React.HTMLAttributes<HTMLTableRowElement> {
+    index: number;
+    moveRow: (dragIndex: number, hoverIndex: number) => void;
+  }
+
+  const type = "DraggableBodyRow";
+
+  const DraggableBodyRow = ({
+    index,
+    moveRow,
+    className,
+    style,
+    ...restProps
+  }: DraggableBodyRowProps) => {
+    const ref = useRef<HTMLTableRowElement>(null);
+    const [{ isOver, dropClassName }, drop] = useDrop({
+      accept: type,
+      collect: (monitor) => {
+        const { index: dragIndex } = monitor.getItem() || {};
+        if (dragIndex === index) {
+          return {};
+        }
+        return {
+          isOver: monitor.isOver(),
+          dropClassName:
+            dragIndex < index ? " drop-over-downward" : " drop-over-upward",
+        };
       },
+      drop: (item: { index: number }) => {
+        moveRow(item.index, index);
+      },
+    });
+    const [, drag] = useDrag({
+      type,
+      item: { index },
+      collect: (monitor) => ({
+        isDragging: monitor.isDragging(),
+      }),
+    });
+    drop(drag(ref));
+
+    return (
+      <tr
+        ref={ref}
+        className={`${className}${isOver ? dropClassName : ""}`}
+        style={{ cursor: "move", ...style }}
+        {...restProps}
+      />
+    );
+  };
+
+  // const columns: ColumnsType<DataType> = [
+  //   {
+  //     key: "1",
+  //     title: "ID",
+  //     dataIndex: "id",
+  //   },
+  //   {
+  //     key: "2",
+  //     title: "Name",
+  //     dataIndex: "name",
+  //   },
+  //   {
+  //     key: "3",
+  //     title: "Age",
+  //     dataIndex: "age",
+  //   },
+  //   {
+  //     key: "4",
+  //     title: "Actions",
+  //     render: (record: any) => {
+  //       return (
+  //         <>
+  //           <EditFilled
+  //             onClick={() => {
+  //               showModalEdit();
+  //               onEditUser(record);
+  //             }}
+  //           ></EditFilled>
+  //           <DeleteOutlined
+  //             style={{ color: "red", marginLeft: 12 }}
+  //             onClick={() => {
+  //               onDeleteUser(record);
+  //             }}
+  //           />
+  //         </>
+  //       );
+  //     },
+  //   },
+  // ];
+
+  const components = {
+    body: {
+      row: DraggableBodyRow,
     },
-  ];
+  };
+
+  const moveRow = useCallback(
+    (dragIndex: number, hoverIndex: number) => {
+      const dragRow = dataSource[dragIndex];
+      setDataSource(
+        update(dataSource, {
+          $splice: [
+            [dragIndex, 1],
+            [hoverIndex, 0, dragRow],
+          ],
+        }),
+      );
+    },
+    [dataSource],
+  );
 
   const showModalAdd = () => {
     setisModalAddOpen(true);
@@ -198,11 +325,32 @@ function User(props: any) {
               </Col>
             </Row>
             <hr></hr>
-            <Table
-              columns={columns}
-              dataSource={dataSource}
-              pagination={false}
-            />
+
+            <DndProvider backend={HTML5Backend}>
+              <ReactDragListView.DragColumn
+                onDragEnd={(fromIndex, toIndex) => {
+                  const col = [...columns];
+                  const item = col.splice(fromIndex, 1)[0];
+                  col.splice(toIndex, 0, item);
+                  setColumns(col);
+                }}
+                nodeSelector={"th"}
+              >
+                <Table
+                  columns={columns}
+                  dataSource={dataSource}
+                  pagination={false}
+                  components={components}
+                  onRow={(_, index) => {
+                    const attr = {
+                      index,
+                      moveRow,
+                    };
+                    return attr as React.HTMLAttributes<any>;
+                  }}
+                />
+              </ReactDragListView.DragColumn>
+            </DndProvider>
             <Modal
               title="Add User"
               visible={isModalAddOpen}
