@@ -10,21 +10,24 @@ const { TabPane } = Tabs;
 
 const { Content } = Layout;
 function Task(props: any) {
-  localStorage.setItem(
-    "users",
-    JSON.stringify([
-      {
-        id: "1345",
-        name: "Victor",
-        age: "22",
-      },
-      {
-        id: "2654",
-        name: "Kiran",
-        age: "26",
-      },
-    ]),
-  );
+  if (localStorage.getItem("jwt") == null) {
+    localStorage.setItem(
+      "users",
+      JSON.stringify([
+        {
+          id: "1345",
+          name: "Victor",
+          age: "22",
+        },
+        {
+          id: "2654",
+          name: "Kiran",
+          age: "26",
+        },
+      ]),
+    );
+  }
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [key, setKey] = useState("");
 

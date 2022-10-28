@@ -72,8 +72,9 @@ const LoginPage: React.FC<Props> = () => {
     const encodedSignature = btoa(signature);
 
     const jwt = `${encodedHeaders}.${encodedPlayload}.${encodedSignature}`;
-    localStorage.setItem("jwt", jwt);
-    return navigate("/");
+    localStorage.setItem("jwt", JSON.stringify(jwt));
+    // return navigate("/");
+    window.location.href = "/";
   };
 
   const onFinishFailed = (errorInfo: any) => {

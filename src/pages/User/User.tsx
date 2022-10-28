@@ -33,6 +33,7 @@ import client from "@assets/images/users/icon-user.png";
 const { Search } = Input;
 const { Content } = Layout;
 function User(props: any) {
+  const navigate = useNavigate();
   const [isShowPopover, setIsShowPopover] = useState<boolean>(false);
   const [keySelectRecord, setkeySelectRecord] = useState("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -149,46 +150,6 @@ function User(props: any) {
     );
   };
 
-  // const columns: ColumnsType<DataType> = [
-  //   {
-  //     key: "1",
-  //     title: "ID",
-  //     dataIndex: "id",
-  //   },
-  //   {
-  //     key: "2",
-  //     title: "Name",
-  //     dataIndex: "name",
-  //   },
-  //   {
-  //     key: "3",
-  //     title: "Age",
-  //     dataIndex: "age",
-  //   },
-  //   {
-  //     key: "4",
-  //     title: "Actions",
-  //     render: (record: any) => {
-  //       return (
-  //         <>
-  //           <EditFilled
-  //             onClick={() => {
-  //               showModalEdit();
-  //               onEditUser(record);
-  //             }}
-  //           ></EditFilled>
-  //           <DeleteOutlined
-  //             style={{ color: "red", marginLeft: 12 }}
-  //             onClick={() => {
-  //               onDeleteUser(record);
-  //             }}
-  //           />
-  //         </>
-  //       );
-  //     },
-  //   },
-  // ];
-
   const components = {
     body: {
       row: DraggableBodyRow,
@@ -234,16 +195,16 @@ function User(props: any) {
   };
 
   const handleOkEdit = () => {
-    setDataSource((pre: any) => {
-      return pre.map((x: any) => {
-        if (x.id === editingUser.id) {
-          return editingUser;
-        } else {
-          return x;
-        }
-      });
+    const newDataSource = dataSource.map((item: any) => {
+      if (item.id === editingUser.id) {
+        return editingUser;
+      } else {
+        return item;
+      }
     });
-    localStorage.setItem("users", JSON.stringify([...dataSource]));
+    localStorage.setItem("users", JSON.stringify([...newDataSource]));
+    setDataSource(newDataSource);
+
     setEditingUser(UserModel.createEmptyUser());
     setisModalEditOpen(false);
   };
@@ -253,13 +214,17 @@ function User(props: any) {
     setisModalEditOpen(false);
   };
 
-  const onSearch = (key: any) => {
-    console.log(key);
-  };
-
   useEffect(() => {
     const keys = window.location.pathname;
     setKey(keys.slice(6));
+
+    const timer = setInterval(function () {
+      localStorage.removeItem("jwt");
+      return navigate("/login");
+    }, 1000 * 60 * 20);
+    return () => {
+      clearInterval(timer);
+    };
   }, []);
 
   const onEditUser = (record: any) => {
@@ -306,11 +271,7 @@ function User(props: any) {
             </Row>
             <Row>
               <Col span={6}>
-                <Search
-                  placeholder="Search"
-                  onSearch={onSearch}
-                  className="input-search-user"
-                />
+                <Search placeholder="Search" className="input-search-user" />
               </Col>
               <Col span={12}></Col>
               <Col span={6}>
