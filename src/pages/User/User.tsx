@@ -15,6 +15,7 @@ import {
   Button,
   Tag,
   Modal,
+  Calendar,
 } from "antd";
 
 import update from "immutability-helper";
@@ -327,7 +328,7 @@ function User(props: any) {
                   });
                 }}
               ></Input>
-              Age:
+              {/* Age:
               <Input
                 value={editingUser?.age}
                 onChange={(e) => {
@@ -335,7 +336,16 @@ function User(props: any) {
                     return { ...pre, age: e.target.value };
                   });
                 }}
-              ></Input>
+              ></Input> */}
+              DoB:
+              <Calendar
+                onSelect={(e) => {
+                  setEditingUser((pre: any) => {
+                    const age = new Date().getFullYear() - e.year();
+                    return { ...pre, age: age };
+                  });
+                }}
+              ></Calendar>
             </Modal>
             <Modal
               title="Edit User"
@@ -352,7 +362,7 @@ function User(props: any) {
                   });
                 }}
               ></Input>
-              Age:
+              {/* Age:
               <Input
                 value={editingUser?.age}
                 onChange={(e) => {
@@ -360,7 +370,16 @@ function User(props: any) {
                     return { ...pre, age: e.target.value };
                   });
                 }}
-              ></Input>
+              ></Input> */}
+              DoB:
+              <Calendar
+                onSelect={(e) => {
+                  setEditingUser((pre: any) => {
+                    const age = new Date().getFullYear() - e.year();
+                    return { ...pre, age: age };
+                  });
+                }}
+              ></Calendar>
             </Modal>
           </Content>
         </Layout>
